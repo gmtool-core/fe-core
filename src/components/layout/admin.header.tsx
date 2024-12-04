@@ -9,11 +9,8 @@ import { AdminContext } from "@/library/admin.context";
 import type { MenuProps } from "antd";
 import { signOut } from "next-auth/react"
 import { useContext } from "react";
-import { useRouter } from "next/navigation";
-import { useSession } from "next-auth/react";
 
 const AdminHeader = (props: any) => {
-  const router = useRouter();
   const {session} = props
   const { Header } = Layout;
   const { collapseMenu, setCollapseMenu } = useContext(AdminContext)!;
