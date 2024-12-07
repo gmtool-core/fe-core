@@ -4,7 +4,8 @@ import { Button, Col, Divider, Form, Input, Row, notification } from "antd";
 
 import { ArrowLeftOutlined } from "@ant-design/icons";
 import Link from "next/link";
-import ModalReactive from "./modal.reactive";
+import ModalChangePassword from "../modal/modal.changepassword";
+import ModalReactive from "../modal/modal.reactive";
 import { authenticate } from "@/utils/actions";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -12,6 +13,7 @@ import { useState } from "react";
 const Login = () => {
   const router = useRouter();
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [changePassword, setChangePassword] = useState(false);
   const [userEmail, setUserEmail] = useState("");
   const onFinish = async (values: any) => {
     const { email, password } = values;
@@ -79,9 +81,14 @@ const Login = () => {
               </Form.Item>
 
               <Form.Item>
-                <Button type="primary" htmlType="submit">
-                  Login
-                </Button>
+                <div className="flex justify-between items-center">
+                  <Button type="primary" htmlType="submit">
+                    Login
+                  </Button>
+                  <Button type="link" onClick={() => setChangePassword(true)}>
+                    Forgot password ?
+                  </Button>
+                </div>
               </Form.Item>
             </Form>
             <Link href={"/"}>
@@ -100,6 +107,7 @@ const Login = () => {
         setIsModalOpen={setIsModalOpen}
         userEmail={userEmail}
       />
+      <ModalChangePassword isModalOpen={changePassword} setIsModalOpen={setChangePassword}/>
     </>
   );
 };

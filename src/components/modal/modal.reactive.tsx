@@ -74,7 +74,10 @@ const ModalReactive = ({
         title="Active account"
         open={isModalOpen}
         onOk={() => setIsModalOpen(true)}
-        onCancel={() => setIsModalOpen(false)}
+        onCancel={() => () => {
+          setIsModalOpen(false);
+          setCurrent(0);
+        }}
         maskClosable={false}
         footer={null}
       >
@@ -153,7 +156,9 @@ const ModalReactive = ({
         )}
         {current === 2 && (
           <div style={{ marginTop: 20 }}>
-            <p>Your account is activated successfully !!! Please login again.</p>
+            <p>
+              Your account is activated successfully !!! Please login again.
+            </p>
           </div>
         )}
       </Modal>
