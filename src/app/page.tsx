@@ -1,12 +1,12 @@
-import HomePage from "@/components/layout/homepage";
 import { auth } from "@/auth";
+import { redirect } from "next/navigation";
 
 export default async function Home() {
   const session = await auth();
   
-  return (
-    <div>
-      <HomePage />
-    </div>
-  );
+  if(session){
+    redirect('/dashboard')
+  }else{
+    redirect('/auth/login')
+  }
 }

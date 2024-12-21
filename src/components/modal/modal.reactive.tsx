@@ -61,7 +61,8 @@ const ModalReactive = ({
       });
     }
   };
-
+  console.log(isModalOpen,'kkkk');
+  
   useEffect(() => {
     if (userEmail) {
       form.setFieldValue("email", userEmail);
@@ -74,9 +75,10 @@ const ModalReactive = ({
         title="Active account"
         open={isModalOpen}
         onOk={() => setIsModalOpen(true)}
-        onCancel={() => () => {
+        onCancel={() => {
           setIsModalOpen(false);
           setCurrent(0);
+          console.log('ppppp');
         }}
         maskClosable={false}
         footer={null}
